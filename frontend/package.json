@@ -1,0 +1,13 @@
+{
+  "name": "study-social-platform-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Study Social Platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000",
+    "build": "echo 'No build process needed for static files'"
+  },
+  "keywords": ["learning", "social", "study"],
+  "author": "Your Name",
+  "license": "MIT"
+}
