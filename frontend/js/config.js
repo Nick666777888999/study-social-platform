@@ -1,9 +1,9 @@
-// 應用配置
+// 應用配置 - 使用真實後端
 const CONFIG = {
-    // API 基礎 URL
+    // API 基礎 URL - 根據環境自動設定
     API_BASE_URL: window.location.hostname === 'localhost' 
         ? 'http://localhost:8000' 
-        : 'https://your-backend-domain.vercel.app',
+        : window.location.origin.replace('study-social-platform', 'study-social-platform-api'),
     
     // 應用設定
     APP: {
@@ -17,8 +17,8 @@ const CONFIG = {
         REAL_TIME_CHAT: true,
         VOICE_MESSAGES: true,
         FILE_SHARING: true,
-        VIDEO_CALLS: false, // 即將推出
-        SCREEN_SHARING: false, // 即將推出
+        VIDEO_CALLS: false,
+        SCREEN_SHARING: false,
         AI_ASSISTANT: true
     },
     
@@ -63,55 +63,8 @@ const CONFIG = {
         UPDATE_SUCCESS: '更新成功',
         DELETE_SUCCESS: '刪除成功',
         SEND_SUCCESS: '傳送成功'
-    },
-    
-    // 動畫設定
-    ANIMATION: {
-        DURATION: {
-            FAST: 150,
-            NORMAL: 300,
-            SLOW: 500
-        },
-        EASING: 'cubic-bezier(0.4, 0, 0.2, 1)'
     }
-};
-
-// 功能模組定義
-const MODULES = {
-    DASHBOARD: 'dashboard',
-    FRIENDS: 'friends',
-    CHAT: 'chat',
-    STUDY_ROOMS: 'study-rooms',
-    DISCUSSION: 'discussion',
-    RESOURCES: 'resources',
-    AI_ASSISTANT: 'ai-assistant',
-    EVENTS: 'events',
-    GROUPS: 'groups',
-    ADMIN_DASHBOARD: 'admin-dashboard',
-    USER_MANAGEMENT: 'user-management',
-    CONTENT_MODERATION: 'content-moderation'
-};
-
-// 用戶角色
-const USER_ROLES = {
-    USER: 'user',
-    ADMIN: 'admin',
-    SUPER_ADMIN: 'super_admin'
-};
-
-// 通知類型
-const NOTIFICATION_TYPES = {
-    FRIEND_REQUEST: 'friend_request',
-    MESSAGE: 'message',
-    POST_LIKE: 'post_like',
-    POST_COMMENT: 'post_comment',
-    STUDY_ROOM_INVITE: 'study_room_invite',
-    EVENT_REMINDER: 'event_reminder',
-    SYSTEM: 'system'
 };
 
 // 匯出到全域
 window.CONFIG = CONFIG;
-window.MODULES = MODULES;
-window.USER_ROLES = USER_ROLES;
-window.NOTIFICATION_TYPES = NOTIFICATION_TYPES;

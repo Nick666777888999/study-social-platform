@@ -1,0 +1,9 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+numReplicas = 1
+
+[variables]
+JWT_SECRET = "your-super-secret-jwt-key-change-in-production"
+DATABASE_URL = "sqlite:///./test.db"
