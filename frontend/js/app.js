@@ -1,4 +1,4 @@
-// 主應用程式
+// 主應用程式 - 修復版本
 class StudySocialApp {
     constructor() {
         this.currentPage = 'home';
@@ -41,10 +41,12 @@ class StudySocialApp {
     
     async checkBackendHealth() {
         try {
-            const health = await api.healthCheck();
-            console.log('後端服務狀態:', health.status);
+            // 暫時註解後端檢查，因為後端還未部署
+            // const health = await api.healthCheck();
+            // console.log('後端服務狀態:', health.status);
+            console.log('後端服務: 使用模擬數據模式');
         } catch (error) {
-            console.warn('後端服務連接失敗，部分功能可能受限');
+            console.warn('後端服務連接失敗，使用模擬數據模式');
         }
     }
     
@@ -55,8 +57,32 @@ class StudySocialApp {
         // 初始化功能卡片
         this.initializeFeatureCards();
         
-        // 設置響應式監聽
+        // 設置響應式監聽 - 修復：添加這個方法
         this.setupResponsiveListeners();
+    }
+    
+    // 添加缺失的方法
+    setupResponsiveListeners() {
+        window.addEventListener('resize', Utils.debounce(() => {
+            this.handleResize();
+        }, 250));
+    }
+    
+    handleResize() {
+        const width = window.innerWidth;
+        console.log('視窗大小改變:', width);
+        
+        // 可以在這裡添加響應式邏輯
+        if (width <= 768) {
+            document.body.classList.add('mobile');
+            document.body.classList.remove('tablet', 'desktop');
+        } else if (width <= 1024) {
+            document.body.classList.add('tablet');
+            document.body.classList.remove('mobile', 'desktop');
+        } else {
+            document.body.classList.add('desktop');
+            document.body.classList.remove('mobile', 'tablet');
+        }
     }
     
     async loadInitialData() {
@@ -114,6 +140,9 @@ class StudySocialApp {
         window.addEventListener('auth:logout', () => {
             this.handleUserLogout();
         });
+        
+        // 初始化響應式狀態
+        this.handleResize();
     }
     
     handleGlobalClick(e) {
@@ -194,7 +223,7 @@ class StudySocialApp {
     
     // 更新平台統計
     updatePlatformStats() {
-        // 這裡可以從 API 獲取真實數據
+        // 使用模擬數據
         const stats = {
             users: Utils.random(1000, 2000),
             studyRooms: Utils.random(500, 1000),
@@ -269,7 +298,7 @@ class StudySocialApp {
     
     // 加載用戶通知
     async loadUserNotifications() {
-        // 這裡可以從 API 獲取真實通知
+        // 使用模擬數據
         console.log('加載用戶通知...');
     }
     
@@ -409,15 +438,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// 服務工作者註冊（PWA 支持）
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
+// 服務工作者註冊（PWA 支持）- 修復：移除不存在的 sw.js
+// if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', () => {
+//         navigator.serviceWorker.register('/sw.js')
+//             .then(registration => {
+//                 console.log('SW registered: ', registration);
+//             })
+//             .catch(registrationError => {
+//                 console.log('SW registration failed: ', registrationError);
+//             });
+//     });
+// }
