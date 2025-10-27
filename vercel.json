@@ -2,11 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "frontend"
-      }
+      "src": "frontend/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -14,7 +11,5 @@
       "src": "/(.*)",
       "dest": "/frontend/$1"
     }
-  ],
-  "buildCommand": "npm run build",
-  "outputDirectory": "frontend"
+  ]
 }

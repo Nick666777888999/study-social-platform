@@ -3,57 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Social Platform - 即將上線</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .container {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 2s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <title>Study Social Platform - 學習社交平台</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Study Social Platform</h1>
-        <p>學習社交平台 - 開發中</p>
-        <p>即將為您帶來最佳的學習體驗</p>
+    <!-- 進入動畫 -->
+    <div id="loading-animation" class="loading-screen">
         <div class="loader"></div>
-        <p>後端 API 開發進行中...</p>
+        <h1>Study Social Platform</h1>
+        <p>載入中...</p>
     </div>
+
+    <!-- 主內容 -->
+    <div id="main-content" class="hidden">
+        <!-- 發光跟隨按鈕容器 -->
+        <div id="glowing-buttons-container" class="glowing-container">
+            <button id="login-btn" class="glowing-btn">登入</button>
+            <button id="register-btn" class="glowing-btn">註冊</button>
+        </div>
+
+        <!-- 品牌介紹 -->
+        <header class="hero-section">
+            <div class="brand-animation">
+                <h1>Study Social Platform</h1>
+                <p>連接全球學習者，打造您的專屬學習社群</p>
+            </div>
+        </header>
+
+        <!-- 功能特色展示 -->
+        <section class="features-section">
+            <h2>核心功能特色</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>👥 智慧好友系統</h3>
+                    <p>根據學習興趣智能推薦好友，建立專屬學習網絡</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💬 即時聊天系統</h3>
+                    <p>一對一私訊、群組聊天，支持語音和圖片分享</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌍 全域聊天廣場</h3>
+                    <p>參與主題討論，發現熱門學習話題</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔠 多語言切換</h3>
+                    <p>支持繁中、英文、日文、韓文即時翻譯</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📚 個人學習檔案</h3>
+                    <p>學習成就系統，個人作品展示區</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💡 AI學習助手</h3>
+                    <p>智能題目解答，學習計畫建議</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 登入模態框 -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>登入您的帳號</h2>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="用戶名或電子郵件" required>
+                <input type="password" id="login-password" placeholder="密碼" required>
+                <button type="submit">登入</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 註冊模態框 -->
+    <div id="register-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>創建新帳號</h2>
+            <form id="register-form">
+                <input type="text" id="register-username" placeholder="用戶名" required>
+                <input type="email" id="register-email" placeholder="電子郵件" required>
+                <input type="password" id="register-password" placeholder="密碼" required>
+                <button type="submit">註冊</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/glowing-buttons.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

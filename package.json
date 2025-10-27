@@ -4,11 +4,6 @@
   "description": "A social learning platform with real-time chat and study features",
   "scripts": {
     "dev": "cd backend && python -m uvicorn app.main:app --reload",
-    "build": "node scripts/vercel-check.js",
-    "deploy": "vercel --prod",
     "start": "cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port 8000"
-  },
-  "engines": {
-    "node": ">=16"
   }
 }
